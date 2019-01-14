@@ -1,7 +1,7 @@
 var mix = require('laravel-mix');
 		mix.setPublicPath('.');
 
-// var spritemap = require('svg-spritemap-webpack-plugin');
+var spritemap = require('svg-spritemap-webpack-plugin');
 var iconfont = require('iconfont-plugin-webpack');
 
 // Autoload jQuery
