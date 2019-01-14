@@ -1,7 +1,7 @@
 var mix = require('laravel-mix');
 		mix.setPublicPath('.');
 
-var spritemap = require('svg-spritemap-webpack-plugin');
+// var spritemap = require('svg-spritemap-webpack-plugin');
 var iconfont = require('iconfont-plugin-webpack');
 
 // Autoload jQuery
@@ -43,17 +43,17 @@ mix.js('typo3conf/ext/empire/Resources/Public/Js/empire.js', 'fileadmin/Resource
 		},
 
 		plugins: [
-			new spritemap({
-				src: 'typo3conf/ext/empire/Resources/Public/Svg/Sprite/*.svg',
-				filename: 'fileadmin/Resources/Public/Svg/sprite.svg',
-				svgo: false
-			}),
+			// new spritemap({
+			// 	src: 'typo3conf/ext/empire/Resources/Public/Svg/Sprite/*.svg',
+			// 	filename: 'fileadmin/Resources/Public/Svg/sprite.svg',
+			// 	svgo: false
+			// }),
 			new iconfont({
 				src: './typo3conf/ext/empire/Resources/Public/Svg/Font', // required - directory where your .svg files are located
 				family: 'icons', // optional - the `font-family` name. if multiple iconfonts are generated, the dir names will be used.
 				dest: {
 					font: './fileadmin/Resources/Public/Font/[family].[type]', // required - paths of generated font files
-					css: './typo3conf/ext/empire/Resources/Public/Sass/no/_icons.scss' // required - paths of generated css files
+					css: './typo3conf/ext/empire/Resources/Public/Sass/empire/_icons.scss' // required - paths of generated css files
 				},
 				watch: {
 					pattern: './typo3conf/ext/empire/Resources/Public/Svg/Font/*.svg', // required - watch these files to reload
