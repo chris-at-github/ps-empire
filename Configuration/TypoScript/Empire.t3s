@@ -6,11 +6,11 @@
 
 page {
 	includeCSS {
-		application = fileadmin/Resources/Public/Css/no.css
+		application = fileadmin/Resources/Public/Css/empire.css
 	}
 
 	includeJSFooter {
-		application = fileadmin/Resources/Public/Js/no.js
+		application = fileadmin/Resources/Public/Js/empire.js
 	}
 
 	10 {
