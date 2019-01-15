@@ -15,15 +15,15 @@ page {
 
 	10 {
 		templateRootPaths {
-			20 = {$plugin.tx_no.view.templateRootPath}
+			20 = {$plugin.tx_empire.view.templateRootPath}
 		}
 
 		layoutRootPaths {
-			20 = {$plugin.tx_no.view.layoutRootPath}
+			20 = {$plugin.tx_empire.view.layoutRootPath}
 		}
 
 		partialRootPaths {
-			20 = {$plugin.tx_no.view.partialRootPath}
+			20 = {$plugin.tx_empire.view.partialRootPath}
 		}
 	}
 }
