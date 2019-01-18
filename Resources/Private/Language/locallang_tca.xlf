@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-11-27T06:25:54Z" product-name="empire">
+		<header/>
+		<body>
+			<trans-unit id="tx_empire_frontend.plugin.title">
+				<source>Empire Frontend</source>
+			</trans-unit>
+			<trans-unit id="tx_empire_frontend.plugin.description">
+				<source>Frontend interface for empire.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
