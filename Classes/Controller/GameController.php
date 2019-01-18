@@ -10,6 +10,14 @@ class GameController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 * Frontend::Index
 	 */
 	public function indexAction() {
-		DebuggerUtility::var_dump($this->settings);
+
+
+		$output = $this->objectManager->get(\TYPO3\CMS\Extbase\Property\PropertyMapper::class)
+			->convert(
+				$this->settings['meta'],
+				\Ps\Empire\Domain\Model\Empire::class
+			);
+
+		DebuggerUtility::var_dump($output);
 	}
 }
