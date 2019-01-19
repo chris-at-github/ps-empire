@@ -2,6 +2,7 @@
 
 namespace Ps\Empire\Controller;
 
+use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class GameController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
@@ -11,13 +12,14 @@ class GameController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 */
 	public function indexAction() {
 
+		$data = [];
 
-		$output = $this->objectManager->get(\TYPO3\CMS\Extbase\Property\PropertyMapper::class)
-			->convert(
-				$this->settings['meta'],
-				\Ps\Empire\Domain\Model\Empire::class
-			);
-
-		DebuggerUtility::var_dump($output);
+		// Environment laden
+		ArrayUtility::mergeRecursiveWithOverrule(
+			$data,
+			$this->objectManager->get(\Ps\Xo\Service\JsonService::class)->toArray($this->objectManager->get(\Ps\Empire\Factory\Empire::class)->getEnvironment(), [
+				'version',
+				'name'
+			]));
 	}
 }
