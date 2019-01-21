@@ -52,7 +52,7 @@ class Empire implements \TYPO3\CMS\Core\SingletonInterface {
 		if(isset($this->environment) === false) {
 			$this->environment = $this->objectManager->get(\TYPO3\CMS\Extbase\Property\PropertyMapper::class)
 				->convert(
-					$this->settings['meta'],
+					$this->settings['environment'],
 					\Ps\Empire\Domain\Model\Empire::class
 				);
 		}

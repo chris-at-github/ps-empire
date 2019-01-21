@@ -1,0 +1,4 @@
+plugin.tx_empire.settings.environment {
+	version = 0.0.1
+	name = Empire
+}
