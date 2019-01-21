@@ -8,18 +8,25 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 class GameController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
-	 * Frontend::Index
+	 * Sammelt alle benoetigen Spieldaten in einem JSON-String
+	 *
+	 * @return void
 	 */
 	public function indexAction() {
 
 		$data = [];
 
+		/* @var \Ps\Empire\Factory\Empire $factory */
+		$factory = $this->objectManager->get(\Ps\Empire\Factory\Empire::class);
+
 		// Environment laden
 		ArrayUtility::mergeRecursiveWithOverrule(
 			$data,
-			$this->objectManager->get(\Ps\Xo\Service\JsonService::class)->toArray($this->objectManager->get(\Ps\Empire\Factory\Empire::class)->getEnvironment(), [
+			$this->objectManager->get(\Ps\Xo\Service\JsonService::class)->toArray($factory->getEnvironment(), [
 				'version',
 				'name'
 			]));
+
+		$this->view->assign('data', json_encode($data));
 	}
 }
