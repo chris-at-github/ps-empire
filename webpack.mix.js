@@ -1,28 +1,24 @@
 var mix = require('laravel-mix');
-		mix.setPublicPath('.');
+mix.setPublicPath('.');
 
 var spritemap = require('svg-spritemap-webpack-plugin');
 var iconfont = require('iconfont-plugin-webpack');
 
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const imageminMozjpeg = require('imagemin-mozjpeg');
+
 // Autoload jQuery
 // @see: https://github.com/JeffreyWay/laravel-mix/blob/master/docs/autoloading.md
-// mix.autoload({
-// 	jquery: ['$', 'window.jQuery']
-// });
+mix.autoload({
+	jquery: ['$', 'window.jQuery']
+});
 
 // Disable Process CSS Urls
 // @see: https://laravel.com/docs/5.7/mix#working-with-stylesheets
 mix.options({
 	processCssUrls: false
 });
-
-// Shot
-// @see: https://github.com/JeffreyWay/laravel-mix/issues/1086
-// var argv = require('yargs').argv;
-// var shot = null
-// if(argv.env.shot !== undefined) {
-// 	shot = argv.env.shot;
-// }
 
 /*
  |--------------------------------------------------------------------------
@@ -35,7 +31,7 @@ mix.options({
  |
  */
 mix.js('typo3conf/ext/empire/Resources/Public/Js/empire.js', 'fileadmin/Resources/Public/Js/empire.js')
- 	.sass('typo3conf/ext/empire/Resources/Public/Sass/empire.scss', 'fileadmin/Resources/Public/Css/empire.css')
+	.sass('typo3conf/ext/empire/Resources/Public/Sass/empire.scss', 'fileadmin/Resources/Public/Css/empire.css')
 	.sass('typo3conf/ext/empire/Resources/Public/Sass/editor.scss', 'fileadmin/Resources/Public/Css/editor.css')
 	.webpackConfig({
 		output: {
@@ -43,11 +39,13 @@ mix.js('typo3conf/ext/empire/Resources/Public/Js/empire.js', 'fileadmin/Resource
 		},
 
 		plugins: [
-			// new spritemap({
-			// 	src: 'typo3conf/ext/empire/Resources/Public/Svg/Sprite/*.svg',
-			// 	filename: 'fileadmin/Resources/Public/Svg/sprite.svg',
-			// 	svgo: false
-			// }),
+			new spritemap('typo3conf/ext/empire/Resources/Public/Svg/Sprite/*.svg', {
+				output: {
+					filename: 'fileadmin/Resources/Public/Svg/sprite.svg',
+					svgo: false
+				}
+			}),
+
 			new iconfont({
 				src: './typo3conf/ext/empire/Resources/Public/Svg/Font', // required - directory where your .svg files are located
 				family: 'icons', // optional - the `font-family` name. if multiple iconfonts are generated, the dir names will be used.
@@ -59,6 +57,20 @@ mix.js('typo3conf/ext/empire/Resources/Public/Js/empire.js', 'fileadmin/Resource
 					pattern: './typo3conf/ext/empire/Resources/Public/Svg/Font/*.svg', // required - watch these files to reload
 					cwd: undefined // optional - current working dir for watching
 				},
+			}),
+
+			new CopyWebpackPlugin([{
+				from: './typo3conf/ext/empire/Resources/Public/Images',
+				to: './fileadmin/Resources/Public/Images', // Laravel mix will place this in 'public/img'
+			}]),
+
+			new ImageminPlugin({
+				test: /\.(jpe?g|png|gif|svg)$/i,
+				plugins: [
+					imageminMozjpeg({
+						quality: 80,
+					})
+				]
 			})
 		]
 	});
