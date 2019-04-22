@@ -12,7 +12,8 @@ $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['xo'] = 'EXT:empire/Configuration/
 	'Ps.Empire',
 	'Frontend',
 	[
-		'Game' => 'index'
+		'Game' => 'index',
+		'Settlement' => 'listing'
 	],
 	[]
 );

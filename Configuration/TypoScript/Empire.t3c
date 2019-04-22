@@ -2,19 +2,24 @@
 
 plugin.tx_empire {
 	view {
-		# cat=plugin.no/file; type=string; label=Path to template root (FE)
+		# cat=plugin.empire/file; type=string; label=Path to template root (FE)
 		templateRootPath = EXT:empire/Resources/Private/Templates/
 
-		# cat=plugin.no/file; type=string; label=Path to template partials (FE)
+		# cat=plugin.empire/file; type=string; label=Path to template partials (FE)
 		partialRootPath = EXT:empire/Resources/Private/Partials/
 
-		# cat=plugin.no/file; type=string; label=Path to template layouts (FE)
+		# cat=plugin.empire/file; type=string; label=Path to template layouts (FE)
 		layoutRootPath = EXT:empire/Resources/Private/Layouts/
+	}
+
+	persistence {
+		# cat=plugin.empire//a; type=string; label=Default storage PID
+		storagePid = 3
 	}
 
 	settings {
 		svg {
-			# cat=plugin.no/settings; type=string; label=Default path for svg files
+			# cat=plugin.empire/settings; type=string; label=Default path for svg files
 			path = EXT:empire/Resources/Public/Svg/
 		}
 	}

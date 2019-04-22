@@ -9,6 +9,16 @@
 			<trans-unit id="tx_empire_frontend.plugin.description">
 				<source>Frontend interface for empire.</source>
 			</trans-unit>
+
+			<trans-unit id="tx_empire_domain_model_gameobject">
+				<source>Game Object</source>
+			</trans-unit>
+			<trans-unit id="tx_empire_domain_model_gameobject.fqcn">
+				<source>FQCN</source>
+			</trans-unit>
+			<trans-unit id="tx_empire_domain_model_gameobject.properties">
+				<source>Properties</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

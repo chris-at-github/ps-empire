@@ -9,3 +9,5 @@ if(!defined('TYPO3_MODE')) {
 'Frontend',
 'LLL:EXT:empire/Resources/Private/Language/locallang_tca.xlf:tx_empire_frontend.plugin.title'
 );
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_empire_domain_model_gameobject');

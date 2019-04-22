@@ -1,0 +1,3 @@
+plugin.tx_empire.persistence {
+	storagePid = {$plugin.tx_empire.persistence.storagePid}
+}
