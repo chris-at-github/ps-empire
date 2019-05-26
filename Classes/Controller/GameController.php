@@ -2,7 +2,7 @@
 
 namespace Ps\Empire\Controller;
 
-use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class GameController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
@@ -13,20 +13,6 @@ class GameController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 * @return void
 	 */
 	public function indexAction() {
-
-		$data = [];
-
-		/* @var \Ps\Empire\Factory\Empire $factory */
-		$factory = $this->objectManager->get(\Ps\Empire\Factory\Empire::class);
-
-		// Environment laden
-		ArrayUtility::mergeRecursiveWithOverrule(
-			$data,
-			$this->objectManager->get(\Ps\Xo\Service\JsonService::class)->toArray($factory->getEnvironment(), [
-				'version',
-				'name'
-			]));
-
-		$this->view->assign('data', json_encode($data));
+		$this->view->assign('data', file_get_contents(ExtensionManagementUtility::extPath('empire') . 'Resources/Private/Cache/ae4b6719-3195-4f56-a0f1-90e5ad7eccf3.json'));
 	}
 }
