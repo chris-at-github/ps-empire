@@ -16,17 +16,4 @@ plugin.tx_empire {
 		# cat=plugin.empire//a; type=string; label=Default storage PID
 		storagePid = 3
 	}
-
-	settings {
-		svg {
-			# cat=plugin.empire/settings; type=string; label=Default path for svg files
-			path = EXT:empire/Resources/Public/Svg/
-		}
-	}
-}
-
-// Default paths for resources.
-folders {
-	private = typo3conf/ext/empire/Resources/Private
-	public = typo3conf/ext/empire/Resources/Public
 }

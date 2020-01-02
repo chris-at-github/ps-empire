@@ -13,6 +13,6 @@ class GameController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 * @return void
 	 */
 	public function indexAction() {
-		$this->view->assign('data', file_get_contents(ExtensionManagementUtility::extPath('empire') . 'Resources/Private/Cache/ae4b6719-3195-4f56-a0f1-90e5ad7eccf3.json'));
+
 	}
 }
