@@ -36,4 +36,17 @@ class DataProvider implements SingletonInterface {
 
 		return $this->data;
 	}
+
+	/**
+	 * @return array
+	 */
+	public function toArray() {
+		$data = [];
+
+		foreach($this->data as $key => $value) {
+			$data[$key] = $value->toArray();
+		}
+
+		return $data;
+	}
 }

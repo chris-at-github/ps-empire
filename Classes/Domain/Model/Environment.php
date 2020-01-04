@@ -2,6 +2,8 @@
 
 namespace Ps\Empire\Domain\Model;
 
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+
 class Environment extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
@@ -40,5 +42,21 @@ class Environment extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setName($name) {
 		$this->name = $name;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function toArray() {
+		$data = [];
+
+		foreach(get_object_vars($this) as $key => $value) {
+			$method = 'get' . ucfirst($key);
+			if(method_exists($this, $method) === true) {
+				$data[$key] = $this->{$method}();
+			}
+		}
+
+		return $data;
 	}
 }

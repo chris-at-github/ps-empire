@@ -1,12 +1,16 @@
 <INCLUDE_TYPOSCRIPT: source="DIR:EXT:empire/Configuration/TypoScript/System/" extensions="t3s">
 
 page {
+	cssInline >
+
 	includeCSS {
-		application = fileadmin/Resources/Public/Css/empire.css
+		application >
+		evx = fileadmin/Resources/Public/Css/empire.css
 	}
 
 	includeJSFooter {
-		application = fileadmin/Resources/Public/Js/empire.js
+		application >
+		evx = assets/js/empire.js
 	}
 
 	10 {

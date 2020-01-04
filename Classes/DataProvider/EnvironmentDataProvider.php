@@ -8,7 +8,7 @@ class EnvironmentDataProvider extends AbstractDataProvider {
 
 	/**
 	 * @param array $data
-	 * @return array|void
+	 * @return array
 	 */
 	public function provide($data) {
 		if(isset($data['environment']) === false) {

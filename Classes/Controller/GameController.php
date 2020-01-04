@@ -15,8 +15,13 @@ class GameController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 * @return void
 	 */
 	public function indexAction() {
-		DebuggerUtility::var_dump($this->objectManager->get(DataProvider::class)->get([
+
+		/** @var DataProvider $data */
+		$dataProvider = $this->objectManager->get(DataProvider::class);
+		$dataProvider->get([
 			EnvironmentDataProvider::class
-		]));
+		]);
+
+		$this->view->assign('data', json_encode($dataProvider->toArray()));
 	}
 }
