@@ -5,7 +5,7 @@ page {
 
 	includeCSS {
 		application >
-		evx = fileadmin/Resources/Public/Css/empire.css
+		evx = assets/css/empire.css
 	}
 
 	includeJSFooter {
