@@ -2,7 +2,7 @@
 
 namespace Ps\Empire\Domain\Model;
 
-class Empire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class Environment extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
 	 * @var string

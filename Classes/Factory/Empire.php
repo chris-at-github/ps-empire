@@ -3,11 +3,16 @@
 namespace Ps\Empire\Factory;
 
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\Property\PropertyMapper;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use Ps\Empire\Domain\Model\Environment;
+
 
 class Empire implements \TYPO3\CMS\Core\SingletonInterface {
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+	 * @var ObjectManager
 	 */
 	protected $objectManager;
 
@@ -17,14 +22,14 @@ class Empire implements \TYPO3\CMS\Core\SingletonInterface {
 	protected $settings;
 
 	/**
-	 * @var \Ps\Empire\Domain\Model\Empire
+	 * @var Empire
 	 */
 	protected $environment;
 
 	/**
-	 * @param \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager
+	 * @param ObjectManager $objectManager
 	 */
-	public function __construct(\TYPO3\CMS\Extbase\Object\ObjectManager $objectManager) {
+	public function __construct(ObjectManager $objectManager) {
 		$this->objectManager = $objectManager;
 		$this->initializeSettings();
 	}
@@ -33,8 +38,8 @@ class Empire implements \TYPO3\CMS\Core\SingletonInterface {
 	 * @return void
 	 */
 	protected function initializeSettings() {
-		$this->settings = $this->objectManager->get(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::class)->getConfiguration(
-			\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'Empire'
+		$this->settings = $this->objectManager->get(ConfigurationManagerInterface::class)->getConfiguration(
+			ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'Empire'
 		);
 	}
 
@@ -46,15 +51,11 @@ class Empire implements \TYPO3\CMS\Core\SingletonInterface {
 	}
 
 	/**
-	 * @return \Ps\Empire\Domain\Model\Empire
+	 * @return Environment
 	 */
 	public function getEnvironment() {
 		if(isset($this->environment) === false) {
-			$this->environment = $this->objectManager->get(\TYPO3\CMS\Extbase\Property\PropertyMapper::class)
-				->convert(
-					$this->settings['environment'],
-					\Ps\Empire\Domain\Model\Empire::class
-				);
+			$this->environment = $this->objectManager->get(PropertyMapper::class)->convert($this->settings['environment'], Environment::class);
 		}
 
 		return $this->environment;

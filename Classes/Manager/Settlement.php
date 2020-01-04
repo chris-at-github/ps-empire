@@ -3,7 +3,7 @@
 namespace Ps\Empire\Manager;
 
 use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Annotation\Inject;
 use Ps\Empire\Domain\Repository\GameObjectRepository;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
@@ -17,7 +17,7 @@ class Settlement implements SingletonInterface {
 
 	/**
 	 * @Extbase\Inject
-	 * @var \Ps\Empire\Domain\Repository\GameObjectRepository
+	 * @var GameObjectRepository
 	 */
 	protected $gameObjectRepository;
 
