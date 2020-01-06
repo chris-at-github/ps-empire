@@ -10,14 +10,19 @@
 				<source>Frontend interface for empire.</source>
 			</trans-unit>
 
+			<trans-unit id="tx_empire_domain_model.properties">
+				<source>Properties</source>
+			</trans-unit>
+			<trans-unit id="tx_empire_domain_model.fqcn">
+				<source>FQCN</source>
+			</trans-unit>
+
 			<trans-unit id="tx_empire_domain_model_gameobject">
 				<source>Game Object</source>
 			</trans-unit>
-			<trans-unit id="tx_empire_domain_model_gameobject.fqcn">
-				<source>FQCN</source>
-			</trans-unit>
-			<trans-unit id="tx_empire_domain_model_gameobject.properties">
-				<source>Properties</source>
+
+			<trans-unit id="tx_empire_domain_model_game">
+				<source>Game</source>
 			</trans-unit>
 		</body>
 	</file>

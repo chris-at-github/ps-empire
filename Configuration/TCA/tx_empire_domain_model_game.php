@@ -1,7 +1,7 @@
 <?php
 return [
 	'ctrl' => [
-		'title' => 'LLL:EXT:empire/Resources/Private/Language/locallang_tca.xlf:tx_empire_domain_model_gameobject',
+		'title' => 'LLL:EXT:empire/Resources/Private/Language/locallang_tca.xlf:tx_empire_domain_model_game',
 		'label' => 'fqcn',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -18,7 +18,7 @@ return [
 			'endtime' => 'endtime',
 		],
 		'searchFields' => 'fqcn, properties',
-		'iconfile' => 'EXT:empire/Resources/Public/Icons/tx_empire_domain_model_gameobject.gif'
+		'iconfile' => 'EXT:empire/Resources/Public/Icons/tx_empire_domain_model_game.gif'
 	],
 	'interface' => [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, fqcn, properties',
@@ -29,14 +29,14 @@ return [
 	'columns' => [
 		'sys_language_uid' => [
 			'exclude' => true,
-			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
+			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.language',
 			'config' => [
 				'type' => 'select',
 				'renderType' => 'selectSingle',
 				'special' => 'languages',
 				'items' => [
 					[
-						'LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages',
+						'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
 						-1,
 						'flags-multiple'
 					]
@@ -47,7 +47,7 @@ return [
 		'l10n_parent' => [
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
 			'exclude' => true,
-			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
+			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
 			'config' => [
 				'type' => 'select',
 				'renderType' => 'selectSingle',
@@ -55,8 +55,8 @@ return [
 				'items' => [
 					['', 0],
 				],
-				'foreign_table' => 'tx_empire_domain_model_gameobject',
-				'foreign_table_where' => 'AND tx_empire_domain_model_gameobject.pid=###CURRENT_PID### AND tx_empire_domain_model_gameobject.sys_language_uid IN (-1,0)',
+				'foreign_table' => 'tx_xo_domain_model_elements',
+				'foreign_table_where' => 'AND tx_xo_domain_model_elements.pid=###CURRENT_PID### AND tx_xo_domain_model_elements.sys_language_uid IN (-1,0)',
 			],
 		],
 		'l10n_diffsource' => [
@@ -65,7 +65,7 @@ return [
 			],
 		],
 		't3ver_label' => [
-			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.versionLabel',
+			'label' => 'LLL:EXT:datamints_dachau/Resources/Private/Language/locallang_db.xlf:default_feeld.t3ver_label',
 			'config' => [
 				'type' => 'input',
 				'size' => 30,
@@ -74,27 +74,23 @@ return [
 		],
 		'hidden' => [
 			'exclude' => true,
-			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
 			'config' => [
 				'type' => 'check',
-				'items' => [
-					'1' => [
-						'0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
-					]
-				],
-			],
+				'default' => 0
+			]
 		],
 		'starttime' => [
 			'exclude' => true,
 			'behaviour' => [
 				'allowLanguageSynchronization' => true
 			],
-			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
+			'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel',
 			'config' => [
 				'type' => 'input',
 				'renderType' => 'inputDateTime',
 				'size' => 13,
-				'eval' => 'datetime',
+				'eval' => 'datetime,int',
 				'default' => 0,
 			],
 		],
@@ -103,19 +99,18 @@ return [
 			'behaviour' => [
 				'allowLanguageSynchronization' => true
 			],
-			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
+			'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel',
 			'config' => [
 				'type' => 'input',
 				'renderType' => 'inputDateTime',
 				'size' => 13,
-				'eval' => 'datetime',
+				'eval' => 'datetime,int',
 				'default' => 0,
 				'range' => [
 					'upper' => mktime(0, 0, 0, 1, 1, 2038)
 				],
 			],
 		],
-
 		'fqcn' => [
 			'exclude' => true,
 			'label' => 'LLL:EXT:empire/Resources/Private/Language/locallang_tca.xlf:tx_empire_domain_model.fqcn',
@@ -125,7 +120,6 @@ return [
 				'eval' => 'trim,required'
 			],
 		],
-
 		'properties' => [
 			'exclude' => true,
 			'label' => 'LLL:EXT:empire/Resources/Private/Language/locallang_tca.xlf:tx_empire_domain_model.properties',
@@ -136,6 +130,5 @@ return [
 				'eval' => 'trim,required'
 			],
 		],
-
 	],
 ];
