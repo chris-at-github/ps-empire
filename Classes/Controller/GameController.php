@@ -3,6 +3,7 @@
 namespace Ps\Empire\Controller;
 
 use Ps\Empire\DataProvider\EnvironmentDataProvider;
+use Ps\Empire\DataProvider\GamesDataProvider;
 use Ps\Empire\Manager\DataProvider;
 use Ps\Empire\Manager\GameManager;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -20,11 +21,12 @@ class GameController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 		/** @var DataProvider $data */
 		$dataProvider = $this->objectManager->get(DataProvider::class);
 		$dataProvider->get([
-			EnvironmentDataProvider::class
+			EnvironmentDataProvider::class,
+			GamesDataProvider::class
 		]);
 
 		$this->view->assign('data', json_encode($dataProvider->toArray()));
 
-		DebuggerUtility::var_dump($this->objectManager->get(GameManager::class)->find());
+		DebuggerUtility::var_dump($dataProvider->toArray());
 	}
 }
