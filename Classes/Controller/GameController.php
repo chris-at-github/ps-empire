@@ -25,6 +25,6 @@ class GameController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 
 		$this->view->assign('data', json_encode($dataProvider->toArray()));
 
-		$this->objectManager->get(GameManager::class)->find();
+		DebuggerUtility::var_dump($this->objectManager->get(GameManager::class)->find());
 	}
 }

@@ -4,6 +4,7 @@ namespace Ps\Empire\Manager;
 
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 class DataProvider implements SingletonInterface {
 
