@@ -4,13 +4,11 @@ namespace Ps\Empire\Manager;
 
 use Ps\Empire\Domain\Repository\GameRepository;
 use Ps\Empire\Factory\Game;
-use TYPO3\CMS\Extbase\Annotation as Extbase;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 class GameManager extends AbstractObject {
 
 	/**
-	 * @Extbase\Inject
+	 * @\TYPO3\CMS\Extbase\Annotation\Inject
 	 * @var \Ps\Empire\Domain\Repository\GameRepository
 	 */
 	protected $gameRepository;
