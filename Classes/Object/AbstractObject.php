@@ -10,15 +10,13 @@ abstract class AbstractObject {
 	use Traits\JsonConverter;
 
 	/**
-	 * @var ObjectManager
+	 * @TYPO3\CMS\Extbase\Annotation\Inject
+	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager
 	 */
 	protected $objectManager;
 
-	/**
-	 * @param ObjectManager $objectManager
-	 */
-	public function __construct(ObjectManager $objectManager) {
-		$this->objectManager = $objectManager;
+	public function __construct() {
+//		$this->objectManager = $objectManager;
 		$this->addJsonConverter(DefaultJsonConverter::class);
 	}
 }

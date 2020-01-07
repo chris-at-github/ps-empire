@@ -41,7 +41,7 @@ class AbstractFactory implements \TYPO3\CMS\Core\SingletonInterface {
 	 * @return object
 	 */
 	public function create($fqcn, $properties) {
-		return $this->objectManager->get($fqcn);
+		return $this->objectManager->get(\TYPO3\CMS\Extbase\Property\PropertyMapper::class)->convert($properties, $fqcn);
 	}
 
 	/**

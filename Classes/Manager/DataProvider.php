@@ -53,8 +53,6 @@ class DataProvider implements SingletonInterface {
 				$cdata = [];
 
 				foreach($value as $ckey => $cvalue) {
-					DebuggerUtility::var_dump(method_exists($cvalue, 'toArray'));
-
 					if(is_object($cvalue) === true && method_exists($cvalue, 'toArray') === true) {
 						$cdata[$ckey] = $cvalue->toArray();
 
