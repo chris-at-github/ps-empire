@@ -2,7 +2,9 @@
 
 namespace Ps\Empire\Object\Game;
 
-class Game {
+use Ps\Empire\Object\AbstractObject;
+
+class Game extends AbstractObject {
 
 	/**
 	 * @var string

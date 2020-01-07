@@ -41,7 +41,7 @@ class AbstractFactory implements \TYPO3\CMS\Core\SingletonInterface {
 	 * @return object
 	 */
 	public function create($fqcn, $properties) {
-		return $this->objectManager->get(\TYPO3\CMS\Extbase\Property\PropertyMapper::class)->convert($properties, $fqcn);
+		return $this->objectManager->get($fqcn);
 	}
 
 	/**
@@ -49,7 +49,7 @@ class AbstractFactory implements \TYPO3\CMS\Core\SingletonInterface {
 	 * @return object
 	 */
 	public function createByObjectModel(AbstractObject $model) {
-		return $this->objectManager->get(\Ps\Empire\Factory\Settlement::class)->create(
+		return $this->objectManager->get(\Ps\Empire\Factory\Game::class)->create(
 			$model->getFqcn(), json_decode($model->getProperties(), true)
 		);
 	}
