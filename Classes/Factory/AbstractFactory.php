@@ -64,8 +64,14 @@ class AbstractFactory implements \TYPO3\CMS\Core\SingletonInterface {
 	 * @return object
 	 */
 	public function createByObjectModel(AbstractObject $model) {
-		return $this->objectManager->get(\Ps\Empire\Factory\Game::class)->create(
+
+		/** @var \Ps\Empire\Object\AbstractObject $object */
+		$object = $this->create(
 			$model->getFqcn(), $this->mergeObjectModelProperties($model)
 		);
+
+		$object->setOrigin($model);
+
+		return $object;
 	}
 }
