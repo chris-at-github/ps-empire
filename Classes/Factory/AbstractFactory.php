@@ -36,6 +36,21 @@ class AbstractFactory implements \TYPO3\CMS\Core\SingletonInterface {
 	}
 
 	/**
+	 * @param AbstractObject $model
+	 * @return array
+	 */
+	protected function mergeObjectModelProperties(AbstractObject $model) {
+
+		// gesammelte JSON Eigenschaften extrahieren
+		$properties = json_decode($model->getProperties(), true);
+
+		// einzelne Eigenschaften aus dem Model uebernehmen
+		$properties['uid'] = $model->getUid();
+
+		return $properties;
+	}
+
+	/**
 	 * @param string $fqcn
 	 * @param array $properties
 	 * @return object
@@ -50,7 +65,7 @@ class AbstractFactory implements \TYPO3\CMS\Core\SingletonInterface {
 	 */
 	public function createByObjectModel(AbstractObject $model) {
 		return $this->objectManager->get(\Ps\Empire\Factory\Game::class)->create(
-			$model->getFqcn(), json_decode($model->getProperties(), true)
+			$model->getFqcn(), $this->mergeObjectModelProperties($model)
 		);
 	}
 }
