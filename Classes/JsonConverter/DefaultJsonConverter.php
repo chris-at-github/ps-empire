@@ -15,8 +15,19 @@ class DefaultJsonConverter extends AbstractJsonConverter {
 	 * @throws UnknownClassException
 	 */
 	public function convert(AbstractObject $object, $data) {
-		DebuggerUtility::var_dump($this->reflectionService->getClassSchema($object));
-		DebuggerUtility::var_dump($object);
+
+		/** @var \TYPO3\CMS\Extbase\Reflection\ClassSchema $schema */
+		$schema = $this->reflectionService->getClassSchema($object);
+
+		foreach($schema->getProperties() as $name => $property) {
+			if($property['type'] === 'string' || $property['type'] === 'integer' || $property['type'] === 'boolean' || $property['type'] === 'float') {
+				$method = 'get' . ucfirst($name);
+
+				if(method_exists($object, $method) === true) {
+					$data[$name] = $object->{$method}();
+				}
+			}
+		}
 
 		return $data;
 	}
