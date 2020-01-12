@@ -26,5 +26,13 @@ class GameController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 		]);
 
 		$this->view->assign('data', json_encode($dataProvider->toArray()));
+
+		DebuggerUtility::var_dump($this->uriBuilder
+			->setTargetPageUid(30)
+			->uriFor('playground', ['game' => 1], 'Game'));
+	}
+
+	public function playgroundAction() {
+		DebuggerUtility::var_dump($this->request->getArguments());
 	}
 }

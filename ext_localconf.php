@@ -9,7 +9,9 @@ if(!defined('TYPO3_MODE')) {
 	'Ps.Empire',
 	'Frontend',
 	[
-		'Game' => 'index',
+		'Game' => 'index, playground',
 	],
-	[]
+	[
+		'Game' => 'playground',
+	]
 );
