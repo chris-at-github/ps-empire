@@ -4,12 +4,10 @@ page {
 	cssInline >
 
 	includeCSS {
-		application >
 		evx = assets/css/empire.css
 	}
 
 	includeJSFooter {
-		application >
 		evx = assets/js/empire.js
 	}
 
